@@ -1,0 +1,40 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Sample SAM Template for DebuggingExample
+Globals:
+  Function:
+    Timeout: 10
+Outputs:
+  DebuggingExampleApi:
+    Description: API Gateway endpoint URL for Prod stage for Debugging Example function
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/DebuggingExample/
+  DebuggingExampleFunction:
+    Description: Debugging Example Lambda Function ARN
+    Value:
+      Fn::GetAtt:
+      - DebuggingExampleFunction
+      - Arn
+  DebuggingExampleFunctionIamRole:
+    Description: Implicit IAM Role created for Debugging Example function
+    Value:
+      Fn::GetAtt:
+      - DebuggingExampleFunctionRole
+      - Arn
+Resources:
+  DebuggingExampleFunction:
+    Properties:
+      CodeUri: s3://repairwise-lambda/7bbcbee117b3001469792173e452a2e7
+      Environment:
+        Variables:
+          PARAM1: VALUE
+      Events:
+        DebuggingExample:
+          Properties:
+            Method: get
+            Path: /
+          Type: Api
+      FunctionName: GetTime
+      Handler: DebuggingExample::DebuggingExample.Functions::GetTime
+      Runtime: dotnetcore2.1
+    Type: AWS::Serverless::Function
+Transform: AWS::Serverless-2016-10-31

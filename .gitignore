@@ -1,0 +1,49 @@
+#### Folder Rules ####
+
+.vs/
+_ReSharper*/
+bin/
+Build/Output/
+node_modules/
+obj/
+packages/
+wwwroot/
+
+
+#### Filetype Rules ####
+
+*.coverage
+*.DotSettings
+*.jtconfig
+*.log
+*.nupkg
+*.obj
+*.orig
+*.PARAFFIN
+*.pubxml
+*.rej
+*.[Rr]e[Ss]harper
+*.suo
+*.user
+*.zip
+
+
+#### Specific Rules ####
+
+# NUnit Testing
+TestResult.xml
+results.xml
+
+# Cake
+tools/**
+!tools/packages.config
+
+# Utilities
+!Utilities/**
+
+#Telerik
+Backup**
+UpgradeWizard*
+_UpgradeWizard*
+mainPath/
+rw-api/
